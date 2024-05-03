@@ -27,7 +27,7 @@ export function decorateRichtext(container = document) {
     let sibling = element;
     while (sibling = sibling.nextElementSibling) {
       if (sibling.dataset.richtextResource === richtextResource
-          && sibling.dataset.richtextProp === richtextProp) {
+        && sibling.dataset.richtextProp === richtextProp) {
         deleteInstrumentation(sibling);
         siblings.push(sibling);
       } else break;
@@ -39,7 +39,7 @@ export function decorateRichtext(container = document) {
     } else {
       const editable = element.closest('[data-aue-resource]');
       if (editable) {
-        orphanElements = editable.querySelectorAll(`[data-richtext-prop="${richtextProp}"]`);
+        orphanElements = editable.querySelectorAll(`:scope > :not([data-aue-resource]) [data-richtext-prop="${richtextProp}"]`);
       } else {
         console.warn(`Editable parent not found or richtext property ${richtextProp}`);
         return;
@@ -48,7 +48,7 @@ export function decorateRichtext(container = document) {
 
     if (orphanElements.length) {
       console.warn('Found orphan elements of a richtext, that were not consecutive siblings of '
-          + 'the first paragraph', orphanElements);
+        + 'the first paragraph', orphanElements);
       orphanElements.forEach((orphanElement) => deleteInstrumentation(orphanElement));
     } else {
       const group = document.createElement('div');
