@@ -341,7 +341,7 @@
           }
         },
         {
-          "title": "Form",
+          "title": "Adaptive Form",
           "id": "form",
           "plugins": {
             "xwalk": {
