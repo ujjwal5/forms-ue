@@ -20,7 +20,6 @@
   "scripts": {
     "test": "mocha",
     "test:playwright": "playwright test",
-    "test:playwright-headed": "playwright test --headed",
     "debug:playwright": "playwright test --project='chromium' --debug",
     "coverage": "c8 --check-coverage --reporter=html --reporter=text --lines 89 --functions 94 --branches 87 mocha",
     "lint:js": "eslint .",

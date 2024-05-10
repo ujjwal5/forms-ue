@@ -8,6 +8,7 @@ executeTestInFolder('./test/unit/fixtures/components/text-input/', testBasicMark
 
 executeTestInFolder('./test/unit/fixtures/form/');
 executeTestInFolder('./test/unit/fixtures/dynamic/', testDynamism);
+executeTestInFolder('./test/unit/fixtures/reset/', testDynamism);
 
 executeTestInFolder('./test/unit/fixtures/submit/', testDynamism);
 executeTestInFolder('./test/unit/fixtures/doc-based-submit/', testDynamism, true);
