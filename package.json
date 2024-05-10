@@ -18,9 +18,9 @@
     "check-coverage": true
   },
   "scripts": {
-    "test": "mocha",
-    "test:playwright": "playwright test",
-    "debug:playwright": "playwright test --project='chromium' --debug",
+    "test:unit": "mocha",
+    "test:e2e": "playwright test",
+    "debug:e2e": "playwright test --project='chromium' --debug",
     "coverage": "c8 --check-coverage --reporter=html --reporter=text --lines 89 --functions 94 --branches 87 mocha",
     "lint:js": "eslint .",
     "lint:css": "stylelint blocks/**/*.css styles/*.css",
