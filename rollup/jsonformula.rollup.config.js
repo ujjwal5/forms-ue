@@ -21,12 +21,12 @@ export default {
     }),
   ],
   output: [{
-    dir: 'src/rules/formula',
+    dir: 'blocks/form/rules/formula',
     format: 'es',
     entryFileNames: 'index.js',
   },
   {
-    dir: 'src/rules/formula',
+    dir: 'blocks/form/rules/formula',
     format: 'es',
     entryFileNames: 'index.min.js',
     plugins: [terser()],

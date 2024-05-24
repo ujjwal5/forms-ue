@@ -23,12 +23,12 @@ export default {
     }),
   ],
   output: [{
-    dir: 'src/rules/model',
+    dir: 'blocks/form/rules/model',
     format: 'es',
     entryFileNames: 'afb-formatters.js',
   },
   {
-    dir: 'src/rules/model',
+    dir: 'blocks/form/rules/model',
     format: 'es',
     entryFileNames: 'afb-formatters.min.js',
     plugins: [terser()],
