@@ -1,5 +1,5 @@
 mountpoints:
   /:
-    url: https://4869-103-43-112-97.ngrok-free.app/bin/franklin.delivery/adobe-rnd/aem-boilerplate-forms/FORMS-14837
+    url: https://6088-130-248-112-29.ngrok-free.app/bin/franklin.delivery/adobe-rnd/aem-boilerplate-forms/FORMS-14837
     type: "markup"
     suffix: ".html"
