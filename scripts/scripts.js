@@ -35,6 +35,11 @@ const pluginContext = {
   toClassName,
 };
 
+const experimentationOptions = {
+  audiences: AUDIENCES,
+  isProd: () => !window.location.hostname.endsWith('.page'),
+};
+
 /**
  * Gets all the metadata elements that are in the given scope.
  * @param {String} scope The scope/prefix for the metadata
@@ -129,15 +134,17 @@ export function decorateMain(main) {
  * @param {Element} doc The container element
  */
 async function loadEager(doc) {
+  document.documentElement.lang = 'en';
+  decorateTemplateAndTheme();
+
   if (getMetadata('experiment')
     || Object.keys(getAllMetadata('campaign')).length
     || Object.keys(getAllMetadata('audience')).length) {
     // eslint-disable-next-line import/no-relative-packages
     const { loadEager: runEager } = await import('../plugins/experimentation/src/index.js');
-    await runEager(document, { audiences: AUDIENCES }, pluginContext);
+    await runEager(document, experimentationOptions, pluginContext);
   }
-  document.documentElement.lang = 'en';
-  decorateTemplateAndTheme();
+
   const main = doc.querySelector('main');
   if (main) {
     decorateMain(main);
@@ -182,7 +189,7 @@ async function loadLazy(doc) {
     || Object.keys(getAllMetadata('audience')).length)) {
     // eslint-disable-next-line import/no-relative-packages
     const { loadLazy: runLazy } = await import('../plugins/experimentation/src/index.js');
-    await runLazy(document, { audiences: AUDIENCES }, pluginContext);
+    await runLazy(document, experimentationOptions, pluginContext);
   }
 }
 
