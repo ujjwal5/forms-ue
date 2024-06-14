@@ -1514,5 +1514,14 @@
                 "valueType": "boolean"
             }
         ]
+    },
+    {
+        "id": "page-metadata",
+        "fields": [
+          {
+            "Audience: Mobile": "mobile",
+            "Audience: Desktop": "desktop"
+          }
+        ]
     }
 ]
