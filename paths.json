@@ -1,6 +1,6 @@
 {
   "mappings": [
     "/:/",
-    "/content/my-site-with-ue/test:/metadata.json"
+    "/content/my-site-with-ue/index:/metadata.json"
   ]
 }

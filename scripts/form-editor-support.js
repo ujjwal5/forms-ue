@@ -189,22 +189,8 @@ function attachEventListners(main) {
   });
 }
 
-function enableExperimentationAudience() {
-    let head = document.getElementsByTagName('head')[0];
-    var meta = document.createElement('meta');
-    meta.name = "Audience: Mobile";
-    meta.content = "https://main--forms-ue--ujjwal5.hlx.page/content/my-site-with-ue/experiments/my-experimentation/challenger-1";
-    head.appendChild(meta);
-
-    var meta1 = document.createElement('meta');
-    meta1.name = "Audience: Desktop";
-    meta1.content = "https://main--forms-ue--ujjwal5.hlx.page/content/my-site-with-ue/experiments/my-experimentation/challenger-2";
-    head.appendChild(meta1);
-}
-
 attachEventListners(document.querySelector('main'));
 const forms = document.querySelectorAll('form');
 annotateFormsForEditing(forms);
 const observer = new MutationObserver(instrumentForms);
 observer.observe(document, { childList: true, subtree: true, attributeFilter: ['form'] });
-enableExperimentationAudience();
