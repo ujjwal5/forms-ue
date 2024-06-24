@@ -1,7 +1,7 @@
 {
   "mappings": [
     "/:/",
-    "/content/my-site-with-ue:/",
+    "/content/my-site-with-ue/index:/",
     "/content/my-site-with-ue/metadata:/metadata.json"
   ]
 }
