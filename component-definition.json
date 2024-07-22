@@ -356,6 +356,30 @@
           }
         }
       ]
+    },
+    {
+      "title": "Adaptive Form Custom Components",
+      "id": "form-custom",
+      "components": [
+        {
+          "title": "Rating Component",
+          "id": "rating",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/fd/components/form/numberinput/v1/numberinput",
+                "template": {
+                  "jcr:title": "Rating",
+                  "fieldType": "number-input",
+                  "fd:viewType": "rating",
+                  "enabled": true,
+                  "visible": true
+                }
+              }
+            }
+          }
+        }
+      ]
     }
   ]
 }
