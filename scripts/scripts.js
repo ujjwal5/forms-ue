@@ -18,11 +18,46 @@ import {
 
 const LCP_BLOCKS = []; // add your LCP blocks to the list
 
+function setVisitorCookie(name, value, days) {
+  let expires = "";
+  if (days) {
+      const date = new Date();
+      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+      expires = "; expires=" + date.toUTCString();
+  }
+  document.cookie = name + "=" + (value || "") + expires + "; path=/";
+}
+
+function getVisitorCookie(name) {
+  const nameEQ = name + "=";
+  const ca = document.cookie.split(';');
+  for (let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+  }
+  return null;
+}
+
+function checkFirstTimeVisitor() {
+  const visitorCookie = getVisitorCookie("isReturningVisitor");
+  if (!visitorCookie) {
+      // First-time visitor
+      setVisitorCookie("isReturningVisitor", "true", 7); // Set cookie for one week
+      return true;
+  } else {
+      // Returning visitor
+      return false;
+  }
+}
+
 const AUDIENCES = {
   mobile: () => window.innerWidth < 600,
   desktop: () => window.innerWidth >= 600,
   // define your custom audiences here as needed
   "mobile-desktop": () => true,
+  newcomer: () => checkFirstTimeVisitor(),
+  returning: () => !checkFirstTimeVisitor(),
 };
 
 // Define an execution context
