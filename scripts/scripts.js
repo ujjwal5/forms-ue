@@ -22,6 +22,7 @@ const AUDIENCES = {
   mobile: () => window.innerWidth < 600,
   desktop: () => window.innerWidth >= 600,
   // define your custom audiences here as needed
+  mobile-desktop: () => true,
 };
 
 // Define an execution context
