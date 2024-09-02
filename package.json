@@ -19,9 +19,8 @@
     "check-coverage": true
   },
   "scripts": {
-<<<<<<< HEAD
     "test": "npm run test:unit && npm run test:e2e",
-    "test:unit": "mocha",
+    "test:unit": "npm run build:json --silent && mocha",
     "test:e2e": "playwright test",
     "debug:e2e": "playwright test --project='chromium' --debug",
     "coverage:unit": "c8 --check-coverage --reporter=html --reporter=text mocha",
@@ -35,17 +34,12 @@
     "update:formatters": "rollup -c rollup/af-formatters.rollup.config.js",
     "update:functions": "cp node_modules/@aemforms/af-custom-functions/src/index.js blocks/form/rules/functions.js",
     "update": "npm run update:core && npm run update:formula && npm run update:formatters",
-    "postinstall": "npx playwright install --with-deps chromium"
-=======
-    "lint:js": "eslint . --ext .json,.js,.mjs",
-    "lint:css": "stylelint blocks/**/*.css styles/*.css",
-    "lint": "npm run lint:js && npm run lint:css",
+    "postinstall": "npx playwright install --with-deps chromium",
     "build:json": "npm-run-all -p build:json:models build:json:definitions build:json:filters",
     "build:json:models": "merge-json-cli -i 'models/_component-models.json' -o 'component-models.json'",
     "build:json:definitions": "merge-json-cli -i 'models/_component-definition.json' -o 'component-definition.json'",
     "build:json:filters": "merge-json-cli -i 'models/_component-filters.json' -o 'component-filters.json'",
     "prepare": "husky"
->>>>>>> feat: simplify and split models/definition/filters files (#30)
   },
   "repository": {
     "type": "git",
@@ -89,7 +83,6 @@
     "rollup-plugin-terser": "^7.0.2",
     "sinon": "^17.0.1",
     "eslint-plugin-json": "3.1.0",
-    "eslint-plugin-xwalk": "github:adobe-rnd/eslint-plugin-xwalk#v0.1.0",
     "husky": "9.1.1",
     "merge-json-cli": "1.0.3",
     "npm-run-all": "4.1.5",

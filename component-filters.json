@@ -15,6 +15,7 @@
       "hero",
       "cards",
       "columns",
+      "fragment",
       "form",
       "form-embed"
     ]
@@ -23,6 +24,21 @@
     "id": "cards",
     "components": [
       "card"
+    ]
+  },
+  {
+    "id": "columns",
+    "components": [
+      "column"
+    ]
+  },
+  {
+    "id": "column",
+    "components": [
+      "text",
+      "image",
+      "button",
+      "title"
     ]
   },
   {
