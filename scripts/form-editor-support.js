@@ -102,6 +102,22 @@ function getPropertyModel(fd) {
   return fd[':type'];
 }
 
+function annotateContainer(fieldWrapper, fd) {
+  fieldWrapper.setAttribute('data-aue-resource', `urn:aemconnection:${fd.properties['fd:path']}`);
+  fieldWrapper.setAttribute('data-aue-model', fd.fieldType);
+  fieldWrapper.setAttribute('data-aue-label', fd.label?.value || fd.name);
+  fieldWrapper.setAttribute('data-aue-type', 'container');
+  fieldWrapper.setAttribute('data-aue-behavior', 'component');
+  fieldWrapper.setAttribute('data-aue-filter', 'form');
+}
+
+export function getContainerChildNodes(container, fd) {
+  if (fd[':type'] === 'modal') {
+    return container.querySelector('.modal-content')?.childNodes;
+  }
+  return container.childNodes;
+}
+
 function annotateItems(items, formDefinition, formFieldMap) {
   try {
     for (let i = items.length - 1; i >= 0; i -= 1) {
@@ -121,13 +137,8 @@ function annotateItems(items, formDefinition, formFieldMap) {
             if (fd.properties['fd:fragment']) {
               annotateFormFragment(fieldWrapper, fd);
             } else {
-              fieldWrapper.setAttribute('data-aue-resource', `urn:aemconnection:${fd.properties['fd:path']}`);
-              fieldWrapper.setAttribute('data-aue-model', fd.fieldType);
-              fieldWrapper.setAttribute('data-aue-label', fd.label?.value || fd.name);
-              fieldWrapper.setAttribute('data-aue-type', 'container');
-              fieldWrapper.setAttribute('data-aue-behavior', 'component');
-              fieldWrapper.setAttribute('data-aue-filter', 'form');
-              annotateItems(fieldWrapper.childNodes, formDefinition, formFieldMap);
+              annotateContainer(fieldWrapper, fd);
+              annotateItems(getContainerChildNodes(fieldWrapper, fd), formDefinition, formFieldMap);
               // retain wizard step selection
               if (activeWizardStep === fieldWrapper.dataset.id) {
                 handleWizardNavigation(fieldWrapper.parentElement, fieldWrapper);
@@ -289,7 +300,7 @@ export async function applyChanges(event) {
             parent.removeAttribute('data-component-status');
           }
           await generateFormRendition(parentDef, parent, getItems);
-          annotateItems(parent.childNodes, formDef, {});
+          annotateItems(getContainerChildNodes(parent, parentDef), formDef, {});
           return true;
         }
         return false;

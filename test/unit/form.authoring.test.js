@@ -4,6 +4,7 @@ import path from 'path';
 import fs from 'fs';
 import {
   annotateFormForEditing, getItems, getFieldById, applyChanges, handleWizardNavigation,
+  getContainerChildNodes,
 } from '../../scripts/form-editor-support.js';
 import { generateFormRendition } from '../../blocks/form/form.js';
 import { ueFormDef } from './forms/universaleditorform.js';
@@ -23,7 +24,7 @@ describe('Universal Editor Authoring Test Cases', () => {
   it('test form annotation for UE', async () => {
     document.documentElement.classList.add('adobe-ue-edit');
     const formEl = document.createElement('form');
-
+    window.hlx.codeBasePath = '../../';
     await generateFormRendition(ueFormDef, formEl, getItems);
 
     annotateFormForEditing(formEl, ueFormDef);
@@ -61,7 +62,7 @@ describe('Universal Editor Authoring Test Cases', () => {
             } else {
               testAnnotation(node, fd, 'container', fd.fieldType);
             }
-            testChildren(node.childNodes, formDef, fieldMap);
+            testChildren(getContainerChildNodes(node, fd), formDef, fieldMap);
           } else if (fd.properties['fd:fragment'] && node.classList.contains('edit-mode')) {
             testAnnotation(node, fd, 'component', 'form-fragment');
             const textNodeCount = Array.from(node.childNodes)
