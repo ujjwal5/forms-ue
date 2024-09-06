@@ -89,6 +89,9 @@
           "...": "./form/_telephone-input.json#/definitions"
         },
         {
+          "...": "./form/_tnc.json#/definitions"
+        },
+        {
           "...": "./form/_text.json#/definitions"
         },
         {
