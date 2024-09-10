@@ -6,8 +6,31 @@
     ]
   },
   {
+    "id": "section",
+    "components": [
+      "text",
+      "image",
+      "button",
+      "title",
+      "hero",
+      "cards",
+      "columns",
+      "fragment",
+      "form",
+      "form-embed"
+    ]
+  },
+  {
+    "id": "cards",
+    "components": [
+      "card"
+    ]
+  },
+  {
     "id": "columns",
-    "components": []
+    "components": [
+      "column"
+    ]
   },
   {
     "id": "column",
@@ -19,39 +42,28 @@
     ]
   },
   {
-    "id": "section",
-    "components": [
-      "text",
-      "image",
-      "button",
-      "title",
-      "hero",
-      "cards",
-      "columns",
-      "form"
-    ]
-  },
-  {
-    "id": "cards",
-    "components": [
-      "card"
-    ]
-  },
-  {
     "id": "form",
     "components": [
-      "plain-text",
-      "text-input",
-      "number-input",
-      "date-input",
-      "panel",
       "checkbox",
+      "checkbox-group",
+      "date-input",
       "drop-down",
-      "radio-group",
       "email",
-      "fragment",
+      "file-input",
       "form-button",
-      "form-image"
+      "form-fragment",
+      "form-image",
+      "form-reset-button",
+      "form-submit-button",
+      "modal",
+      "number-input",
+      "panel",
+      "plain-text",
+      "radio-group",
+      "telephone-input",
+      "text-input",
+      "tnc",
+      "wizard"
     ]
   }
 ]
