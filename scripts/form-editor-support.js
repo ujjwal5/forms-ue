@@ -345,12 +345,11 @@ function attachEventListners(main) {
   document.body.addEventListener('aue:ui-edit', ueEditModeHandler);
 }
 
-export function init(main) {
+export function init() {
   const observer = new MutationObserver(instrumentForms);
   observer.observe(document, { childList: true, subtree: true, attributeFilter: ['form'] });
   loadCSS(`${window.hlx.codeBasePath}/scripts/form-editor-support.css`);
   attachEventListners(document.querySelector('main'));
 }
 
-init(main);
-
+init();
