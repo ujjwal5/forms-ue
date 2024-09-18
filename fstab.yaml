@@ -1,5 +1,5 @@
 mountpoints:
   /:
-    url: https://48a2-103-43-114-129.ngrok-free.app/bin/franklin.delivery/ujjwal5/forms-ue/main
+    url: https://c397-2406-7400-94-8737-1cf6-b025-3e8e-b41e.ngrok-free.app/bin/franklin.delivery/ujjwal5/forms-ue/main
     type: "markup"
     suffix: ".html"
